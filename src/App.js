@@ -1,24 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './frontend/Login';
+import Register from './frontend/Register';
+import Home from './frontend/Home';
+import TimeTabel from './frontend/TimeTabel';
+import Notes from './frontend/Notes';
+import { useState } from 'react';
+import Complaint from './frontend/Complaint';
 function App() {
+  const [alert, setAlert] = useState(null);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+
+        <Routes>
+
+          <Route path="/" element={<Login showAlert={showAlert} />} />
+          <Route path="/login" element={<Login showAlert={showAlert} />} />
+          <Route path="/register" element={<Register showAlert={showAlert} />} />
+
+          <Route path='/home' element={<Home alert={alert} showAlert={showAlert} />}>
+            <Route path="notes" element={<Notes showAlert={showAlert} />} />
+            <Route path="timetabel" element={<TimeTabel showAlert={showAlert} />} />
+            <Route path="complaint" element={<Complaint showAlert={showAlert} />} />
+          </Route>
+
+        </Routes>
+
+      </Router>
+
+
+
+    </>
   );
 }
 
