@@ -6,8 +6,7 @@ export default function TimeTabel(props) {
     }
     return (
         <div>
-            <button onClick={handleClick} className='btn-primary'> click me</button>
-            <div>hello there</div>
+
         </div>
     )
 }
