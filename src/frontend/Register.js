@@ -1,10 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 export default function Register() {
     let navigate = useNavigate();
+
     function handleRegisterClick() {
         navigate("/login");
     }
+
     return (
         <>
             <section className="vh-100" style={{ backgroundColor: '#eee' }}>
@@ -35,22 +38,104 @@ export default function Register() {
                                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="password" id="form3Example4c" className="form-control" />
-                                                        <label className="form-label" htmlFor="form3Example4c">mobile</label>
+                                                        <label className="form-label" htmlFor="form3Example4c">Mobile</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="password" id="form3Example4cd" className="form-control" />
-                                                        <label className="form-label" htmlFor="form3Example4cd">password</label>
+                                                        <label className="form-label" htmlFor="form3Example4cd">Password</label>
                                                     </div>
                                                 </div>
+
+                                                {/* Choose Courses */}
+                                                <div className="mb-3">
+                                                    <label htmlFor="courses" className="form-label">Choose Courses</label>
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label htmlFor="courses" className="form-label">Choose Club</label>
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+                                                    <select className="form-select my-2" id="courses" name="courses">
+                                                        <option value="course1">Course 1</option>
+                                                        <option value="course2">Course 2</option>
+                                                        <option value="course3">Course 3</option>
+                                                        <option value="course4">Course 4</option>
+                                                        <option value="course5">Course 5</option>
+                                                        <option value="course6">Course 6</option>
+                                                    </select>
+
+                                                </div>
+
+                                                {/* Terms of service checkbox and Register button remain unchanged */}
                                                 <div className="form-check d-flex justify-content-center mb-5">
                                                     <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                                                     <label className="form-check-label" htmlFor="form2Example3c">
                                                         I agree to all statements in <a href="#!">Terms of service</a>
                                                     </label>
                                                 </div>
+
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                     <button type="button" className="btn btn-primary btn-lg" onClick={handleRegisterClick}>Register</button>
                                                 </div>

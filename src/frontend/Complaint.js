@@ -3,8 +3,47 @@ import ComplaintTile from '../components/ComplaintTile'
 import { useState, useContext } from 'react';
 import Modal from '../components/addPopUp';
 export default function Complaint() {
-    const [arr, setArr] = useState([{ tag: "suggestion", title: "acadamics", description: "extension of last date of submission of assignment" },
-    { tag: "suggestion", title: "acadamics", description: "extension of last date of submission of assignment" }
+    const [arr, setArr] = useState([
+        {
+            tag: "Suggestion",
+            title: "Eco-Friendly Initiatives",
+            description: "Suggesting the implementation of eco-friendly practices on campus, such as recycling programs and energy-saving measures."
+        },
+        {
+            tag: "Complaint",
+            title: "Parking Space Shortage",
+            description: "Expressing frustration over the limited availability of parking spaces for students, causing delays and inconvenience."
+        },
+        {
+            tag: "Complaint",
+            title: "Noise in Library",
+            description: "issues with noise levels in the library, affecting the study environment and concentration of students."
+        },
+        {
+            tag: "Suggestion",
+            title: "Mental Health Support",
+            description: "Recommending the establishment of additional mental support services for students facing academic and personal stress."
+        },
+        {
+            tag: "Complaint",
+            title: "Inadequate Cafeteria",
+            description: "Complaining about the lack of diverse and healthy food options, impacting the overall well-being of students."
+        },
+        {
+            tag: "Suggestion",
+            title: "Career Guidance Programs",
+            description: "Proposing the implementation of programs to provide students with better career guidance and preparation for post-graduation."
+        },
+        {
+            tag: "Suggestion",
+            title: "Enhanced Campus Security",
+            description: "Recommending improvements in campus security measures to ensure the safety and well-being of students."
+        },
+        {
+            tag: "Complaint",
+            title: "Equipment Malfunction",
+            description: "Reporting issues with malfunctioning projectors, or other equipment in classrooms hindering the learning experience."
+        }
     ]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleOpenModal = () => {

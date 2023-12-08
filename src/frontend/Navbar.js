@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className=''>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-2 ">
                 <Link className="navbar-brand" to="#">
                     <img src="/resources/smvduLogo.png" alt="" width="30" height="30" className="d-inline-block align-top rounded-circle" />
                 </Link>
