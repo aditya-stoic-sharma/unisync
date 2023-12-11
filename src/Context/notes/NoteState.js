@@ -1,6 +1,8 @@
 import { useState } from "react";
 import NoteContext from "./noteContext";
-const hostname = "http://localhost:5000"
+const hostname = "http://localhost:4000"
+
+// function to fetch all nodes 
 
 const NoteState = (props) => {
     const [notes, setNotes] = useState([]);
@@ -21,7 +23,7 @@ const NoteState = (props) => {
 
     // Function to add a note
     const addNote = async (title, description, tag) => {
-        const response = await fetch(`${hostname}/api/notes/addnotes`, {
+        const response = await fetch(`${hostname}/api/notes/addnote`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

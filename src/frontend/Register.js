@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+    const [credentials, setCredentials] = useState({ name: '', email: '', password: '' });
     let navigate = useNavigate();
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    };
+    const handleRegisterClick = async (e) => {
+        e.preventDefault();
 
-    function handleRegisterClick() {
-        navigate("/login");
+        const response = await fetch("http://localhost:4000/api/auth/createuser", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+        });
+
+        const json = await response.json();
+        console.log(json);
+
+        if (json.success) {
+            localStorage.setItem('token', json.authtoken);
+            navigate("/login");
+        }
+        else {
+            alert("Invalid credentials")
+        }
     }
 
     return (
@@ -23,14 +45,14 @@ export default function Register() {
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="text" id="form3Example1c" className="form-control" />
+                                                        <input type="text" id="form3Example1c" className="form-control" value={credentials.name} name="name" onChange={onChange} />
                                                         <label className="form-label" htmlFor="form3Example1c">Your Name</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="email" id="form3Example3c" className="form-control" />
+                                                        <input type="email" id="form3Example3c" className="form-control" value={credentials.email} name="email" onChange={onChange} />
                                                         <label className="form-label" htmlFor="form3Example3c">Your Email</label>
                                                     </div>
                                                 </div>
@@ -44,7 +66,7 @@ export default function Register() {
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="password" id="form3Example4cd" className="form-control" />
+                                                        <input type="password" id="form3Example4cd" className="form-control" value={credentials.password} name="password" onChange={onChange} />
                                                         <label className="form-label" htmlFor="form3Example4cd">Password</label>
                                                     </div>
                                                 </div>
@@ -144,7 +166,7 @@ export default function Register() {
                                         <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                             <img
                                                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                                className="img-fluid" alt="Sample image"
+                                                className="img-fluid" alt="Sample no rendered"
                                             />
                                         </div>
                                     </div>

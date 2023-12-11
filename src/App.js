@@ -7,6 +7,7 @@ import TimeTabel from './frontend/TimeTabel';
 import Notes from './frontend/Notes';
 import { useState } from 'react';
 import Complaint from './frontend/Complaint';
+import NoteState from './Context/notes/NoteState';
 function App() {
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
@@ -21,25 +22,26 @@ function App() {
 
   return (
     <>
-      <Router>
+      <NoteState>
+        <Router>
 
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<Login showAlert={showAlert} />} />
-          <Route path="/login" element={<Login showAlert={showAlert} />} />
-          <Route path="/register" element={<Register showAlert={showAlert} />} />
+            <Route path="/" element={<Login showAlert={showAlert} />} />
+            <Route path="/login" element={<Login showAlert={showAlert} />} />
+            <Route path="/register" element={<Register showAlert={showAlert} />} />
 
-          <Route path='/home' element={<Home alert={alert} showAlert={showAlert} />}>
-            <Route path="notes" element={<Notes showAlert={showAlert} />} />
-            <Route path="timetabel" element={<TimeTabel showAlert={showAlert} />} />
-            <Route path="complaint" element={<Complaint showAlert={showAlert} />} />
-          </Route>
+            <Route path='/home' element={<Home alert={alert} showAlert={showAlert} />}>
+              <Route path="notes" element={<Notes showAlert={showAlert} />} />
+              <Route path="timetabel" element={<TimeTabel showAlert={showAlert} />} />
+              <Route path="complaint" element={<Complaint showAlert={showAlert} />} />
+            </Route>
 
-        </Routes>
+          </Routes>
 
-      </Router>
+        </Router>
 
-
+      </NoteState>
 
     </>
   );
