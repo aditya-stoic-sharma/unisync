@@ -1,33 +1,45 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import NoteItem from '../components/NoteItems';
 import noteContext from '../Context/notes/noteContext';
+import { useNavigate } from 'react-router-dom';
 const Notes = () => {
+    let navigate = useNavigate();
     const context = useContext(noteContext);
-    const { addNote } = context;
+    const { addNote, notes, getNotes } = context;
     // const { notes, addNote } = context;
-    const [notesData, setNotesData] = useState([
-        { id: 1, title: 'Note 1', description: 'This is the description for Note 1, this is note 1 this is note 1.' },
-        { id: 2, title: 'Note 2', description: 'This is the description for Note 2.' },
-        // Add more notes as needed
-    ]);
+    // const [notesData, setNotesData] = useState([
+    //     { id: 1, title: 'Note 1', description: 'This is the description for Note 1, this is note 1 this is note 1.' },
+    //     { id: 2, title: 'Note 2', description: 'This is the description for Note 2.' },
+    //     // Add more notes as needed
+    // ]);
 
-    const [notes, setNotes] = useState({ id: null, title: "", description: "", tag: "general" });
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            getNotes();
+        }
+        else {
+            navigate("/login");
+        }
+        // eslint-disable-next-line
+    }, []);
+
+    const [notes1, setNotes1] = useState({ id: null, title: "", description: "", tag: "general" });
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setNotes({ ...notes, [name]: value });
+        setNotes1({ ...notes1, [name]: value });
     }
 
     function handleAddNote(e) {
         e.preventDefault();
-        const newNote = {
-            id: notesData.length + 1, // Assuming unique ids
-            title: notes.title,
-            description: notes.description,
-        };
-        addNote(notes.title, notes.description, notes.tag);
-        setNotesData([...notesData, newNote]);
-        setNotes({ id: null, title: "", description: "" });
+        // const newNote = {
+        //     id: notesData.length + 1, // Assuming unique ids
+        //     title: notes.title,
+        //     description: notes.description,
+        // };
+        addNote(notes1.title, notes1.description, notes1.tag);
+        // setNotesData([...notesData, newNote]);
+        setNotes1({ id: null, title: "", description: "" });
 
 
     }
@@ -59,7 +71,7 @@ const Notes = () => {
                                     rows="5"
                                     placeholder="Write your note here..."
                                     name='description'
-                                    value={notes.description}
+                                    value={notes1.description}
                                     onChange={handleChange}
                                 ></textarea>
                             </div>
@@ -72,8 +84,8 @@ const Notes = () => {
                 <h2 className="text-center mb-4 text-primary">Your Notes</h2>
 
                 <div className="tiles">
-                    {notesData.map((note) => (
-                        <NoteItem key={note.id} id={note.id} title={note.title} description={note.description} />
+                    {notes.map((note) => (
+                        <NoteItem key={note._id} id={note._id} title={note.title} description={note.description} />
                     ))}
                 </div>
             </div>
